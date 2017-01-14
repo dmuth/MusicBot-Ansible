@@ -1,0 +1,51 @@
+#
+# To run against this playbook, the syntax is:
+#
+#   ansible-playbook ./ping.yaml 
+#
+#
+# Additional things you can do:
+#
+# List what tags are available:
+#
+#   ansible-playbook ./ping.yaml --list-tags
+#
+#
+# List what hosts tasks would be performed:
+#
+#   ansible-playbook ./ping.yaml --list-tasks
+#
+#
+# List hosts that would be contacted:
+# 
+#   ansible-playbook ./ping.yaml --list-hosts
+#
+#
+# -l will limit any of the above to a subset of hosts
+# -t will only execute on certain tags
+#
+
+- name: Install python2 so that Ansible will work
+  hosts: digital-ocean
+  gather_facts: no
+
+  pre_tasks:
+    - name: 'install python2'
+      raw: sudo apt-get -y install python-simplejson
+
+
+- name: Ping Digital Ocean hosts to test connectivity
+  hosts: digital-ocean
+
+  roles:
+    - { role: ping, tags: ping }
+
+
+- name: Set up swapfile on Digital Ocean hosts
+  hosts: digital-ocean
+
+  roles:
+    - { role: provider-digital-ocean, tags: provider-digital-ocean }
+
+
+
