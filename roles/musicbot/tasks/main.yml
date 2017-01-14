@@ -70,12 +70,14 @@
 - name: Install Pip for Python 3
   package: name=python3-pip state=installed
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'trusty'
-  tags: test
+
+- name: Upgrade Pip
+  command: python3.5 -m pip install --upgrade pip
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'trusty'
 
 - name: Install Pip Modules
   command: python3.5 -m pip install -U -r requirements.txt chdir=/var/Musicbot
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'trusty'
-  tags: test
 
 
 - name: Install Pip for Python 3
