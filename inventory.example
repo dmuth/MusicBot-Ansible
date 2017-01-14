@@ -15,4 +15,11 @@ vagrant2 ansible_ssh_host=127.0.0.1 ansible_user=vagrant ansible_ssh_private_key
 [production]
 # Hostname goes here
 
+#
+# If you are building a digital Ocean box, you will need to run the 
+# digital-ocean.yaml playbook first
+#
+[digital-ocean]
+#ip_address ansible_user=root
+
 
