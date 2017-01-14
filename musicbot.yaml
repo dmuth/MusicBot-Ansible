@@ -33,6 +33,7 @@
   roles:
     - { role: musicbot, tags: musicbot }
     - { role: musicbot-config, tags: musicbot-config }
+    - { role: musicbot-service, tags: musicbot-service }
 
 
 

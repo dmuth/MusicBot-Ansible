@@ -1,0 +1,14 @@
+
+
+- name: Install musicbot service (Ubuntu 14.04)
+  copy: src=roles/musicbot-service/files/musicbot.conf dest=/etc/init/musicbot.conf
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'trusty'
+
+- name: Install musicbot.service (Ubuntu 16.04)
+  copy: src=roles/musicbot-service/files/musicbot.service dest=/etc/systemd/system/musicbot.service
+  notify: reload systemctl
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'xenial'
+
+- name: Enable service
+  service: name=musicbot state=started enabled=yes
+

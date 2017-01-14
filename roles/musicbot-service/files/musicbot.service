@@ -1,0 +1,23 @@
+
+
+[Unit]
+Description=MusicBot for Discord
+After=network.target
+
+
+#
+# Run our service and ensure it is restarted
+#
+[Service]
+WorkingDirectory=/var/Musicbot
+ExecStart=/usr/bin/python3.5 /var/Musicbot/run.py
+Restart=always
+
+
+#
+# This keeps the service from being listed as "static".
+#
+[Install]
+WantedBy=multi-user.target
+
+
