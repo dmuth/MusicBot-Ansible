@@ -1,0 +1,11 @@
+
+
+- name: Get username
+  command: whoami
+  register: username
+
+
+- name: Debug output
+  debug: msg="Username {{username.stdout}}, Distro {{ansible_distribution}}, Version {{ansible_distribution_version}}"
+
+
