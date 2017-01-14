@@ -13,6 +13,12 @@ Vagrant.configure(2) do |config|
 		host.vm.box = "hashicorp/precise64"
 
 		#
+		# Stick with the default insecure key so that we can Ansible to 
+		# configure this instance.
+		#
+		host.ssh.insert_key = false
+
+		#
 		# Cache packages we download on the host machine
 		#
 		if Vagrant.has_plugin?("vagrant-cachier")
@@ -39,6 +45,12 @@ Vagrant.configure(2) do |config|
 	config.vm.define "ubuntu14.04" do |host|
 
 		host.vm.box = "ubuntu/trusty64"
+
+		#
+		# Stick with the default insecure key so that we can Ansible to 
+		# configure this instance.
+		#
+		host.ssh.insert_key = false
 
 		#
 		# Cache packages we download on the host machine
@@ -68,6 +80,11 @@ Vagrant.configure(2) do |config|
 
 		host.vm.box = "bento/ubuntu-16.04"
 
+		#
+		# Stick with the default insecure key so that we can Ansible to 
+		# configure this instance.
+		#
+		host.ssh.insert_key = false
 
 		#
 		# Cache packages we download on the host machine
