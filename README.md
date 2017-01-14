@@ -3,7 +3,7 @@
 
 This Ansible playbook is used to install the excellent 
 <a href="https://github.com/Just-Some-Bots/MusicBot">MusicBot bot for Discord</a> onto a machine
-running Ubuntu 16.04 or Ubuntu 14.04. When the playbook is succesfully run, the machine will have the following:
+running Ubuntu 16.04 or Ubuntu 14.04. This is what I use to build the production MusicBot instance for <a href="https://discord.gg/5kAKBaX">Anthrocon's Discord Server</a>.  When the playbook is succesfully run, the machine will have the following:
 
 - A running copy of MusicBot
 - MusicBot configured as a service so that it will restart if the process dies or the machine is restarted
