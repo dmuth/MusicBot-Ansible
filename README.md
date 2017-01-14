@@ -1,5 +1,5 @@
 
-# MusicBot Ansible
+# MusicBot Ansible Playbook
 
 This Ansible playbook is used to install the excellent 
 <a href="https://github.com/Just-Some-Bots/MusicBot">MusicBot bot for Discord</a> onto a machine
