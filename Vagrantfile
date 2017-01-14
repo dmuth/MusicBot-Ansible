@@ -8,40 +8,6 @@
 Vagrant.configure(2) do |config|
 
 
-	config.vm.define "ubuntu12.04" do |host|
-
-		host.vm.box = "hashicorp/precise64"
-
-		#
-		# Stick with the default insecure key so that we can Ansible to 
-		# configure this instance.
-		#
-		host.ssh.insert_key = false
-
-		#
-		# Cache packages we download on the host machine
-		#
-		if Vagrant.has_plugin?("vagrant-cachier")
-			host.cache.scope = :box
-		end
-
-		#
-		# Disable updating the guest extensions because this is usually 
-		# more trouble than it's worth.
-		#
-		if Vagrant.has_plugin?("vagrant-vbguest")
-			host.vbguest.auto_update = false
-		end
-
-		host.vm.provider "virtualbox" do |vb|
-			# Customize the amount of memory on the VM:
-			vb.memory = 512
-			vb.cpus = 2
-		end
-
-	end
-
-
 	config.vm.define "ubuntu14.04" do |host|
 
 		host.vm.box = "ubuntu/trusty64"
