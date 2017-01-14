@@ -33,6 +33,8 @@ Vagrant.configure(2) do |config|
 			host.vbguest.auto_update = false
 		end
 
+		host.vm.network "forwarded_port", guest: 80, host: 8082
+
 		host.vm.provider "virtualbox" do |vb|
 			# Customize the amount of memory on the VM:
 			vb.memory = 512
@@ -66,6 +68,8 @@ Vagrant.configure(2) do |config|
 		if Vagrant.has_plugin?("vagrant-vbguest")
 			host.vbguest.auto_update = false
 		end
+
+		host.vm.network "forwarded_port", guest: 80, host: 8081
 
 		host.vm.provider "virtualbox" do |vb|
 			# Customize the amount of memory on the VM:
