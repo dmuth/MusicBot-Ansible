@@ -28,6 +28,17 @@ Whether you're using Vagrant or not, here's what you'll need to take care of in 
 - <a href="https://github.com/Just-Some-Bots/MusicBot/wiki/Permissions">Edit permissions.ini accordingly</a>
 
 
+## Prerequisites (if using Digital Ocean)
+
+Digital Ocean VMs do not create a swapfile by default, and Ubuntu 16.04 does not include
+Python 2, which Ansible requires.  As such, you'll need to run the Digital Ocean playbook first:
+
+`ansible-playbook ./digital-coean.yaml`
+
+...you will also need to make sure that you have `ansible_user=root` in your inventory 
+for any Digital Ocean hosts.
+
+
 ## Running Ansible
 
 Now you're ready to run Ansible! 
