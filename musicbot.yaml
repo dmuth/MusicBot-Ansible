@@ -1,0 +1,34 @@
+#
+# To run against this playbook, the syntax is:
+#
+#   ansible-playbook ./ping.yaml 
+#
+#
+# Additional things you can do:
+#
+# List what tags are available:
+#
+#   ansible-playbook ./ping.yaml --list-tags
+#
+#
+# List what hosts tasks would be performed:
+#
+#   ansible-playbook ./ping.yaml --list-tasks
+#
+#
+# List hosts that would be contacted:
+# 
+#   ansible-playbook ./ping.yaml --list-hosts
+#
+#
+# -l will limit any of the above to a subset of hosts
+# -t will only execute on certain tags
+
+
+- name: Install Musicbot
+  hosts: all
+  roles:
+    - { role: musicbot, tags: musicbot }
+
+
+
