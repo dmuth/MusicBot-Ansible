@@ -3,10 +3,12 @@
 #
 # Our vagrant hosts
 #
+# Note that it doesn't matter which one of these is Ubuntu 14.04 and which is 16.04,
+# as Ansible will check what version of the distro it is running on
+#
 [vagrant]
-vagrant ansible_ssh_host=127.0.0.1 ansible_user=vagrant ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key ansible_ssh_port=2222
-vagrant2 ansible_ssh_host=127.0.0.1 ansible_user=vagrant ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key ansible_ssh_port=2200
-vagrant3 ansible_ssh_host=127.0.0.1 ansible_user=vagrant ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key ansible_ssh_port=2200
+vagrant ansible_ssh_host=127.0.0.1 ansible_user=vagrant ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key ansible_ssh_common_args="-o StrictHostKeychecking=no" ansible_ssh_port=2222
+vagrant2 ansible_ssh_host=127.0.0.1 ansible_user=vagrant ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key ansible_ssh_common_args="-o StrictHostKeychecking=no" ansible_ssh_port=2200
 
 
 
