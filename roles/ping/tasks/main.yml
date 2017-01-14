@@ -6,6 +6,6 @@
 
 
 - name: Debug output
-  debug: msg="Username {{username.stdout}}, Distro {{ansible_distribution}}, Version {{ansible_distribution_version}}"
+  debug: msg="Username {{username.stdout}}, Distro {{ansible_distribution}}, Release {{ansible_distribution_release}}, Version {{ansible_distribution_version}}"
 
 
