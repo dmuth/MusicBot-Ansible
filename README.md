@@ -3,7 +3,7 @@
 
 This Ansible playbook is used to install the excellent 
 <a href="https://github.com/Just-Some-Bots/MusicBot">MusicBot bot for Discord</a> onto a machine
-running Ubuntu 16.04.  Ubuntu 14.04 is also supported, with some issues.
+running Ubuntu 16.04 or Ubuntu 14.04.
 
 
 ## Prerequisites (if using Vagrant)
@@ -47,15 +47,12 @@ When complete, Musicbot will be installed as a service under systemd on Ubuntu 1
 start when the machine starts and respawn if it crashes (or the process is killed).  In fact,
 if configured properly, it should start playing in your Discord server shortly!
 
-Running as a service is not supported under Ubuntu 14.04 at this time, because...
-
 
 ## Known Issues
 
-- Ubuntu 14.04 will not work out the box, because the `requirements.txt` file in 
-Python does not parse correctly under that version of Pip.  
-I have <a href="https://github.com/Just-Some-Bots/MusicBot/issues/831">filed a bug</a>
-with the maintainers of MusicBot and will revisit this when it is fixed.
+- None at this time.  Don't try to install this on Ubuntu 12.04, though.  
+Not all of the required libraries exist in repositories, at least from 
+what I've been able to see.
 
 
 ## Authors
