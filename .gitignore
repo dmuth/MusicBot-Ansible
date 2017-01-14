@@ -6,3 +6,9 @@ inventory
 
 *.retry
 
+#
+# Don't let users accidentally check in their credentials
+#
+roles/musicbot-config/files/options.ini
+roles/musicbot-config/files/permissions.ini
+

@@ -21,14 +21,18 @@
 #   ansible-playbook ./ping.yaml --list-hosts
 #
 #
+# Additional parameters that can be used:
+#
 # -l will limit any of the above to a subset of hosts
 # -t will only execute on certain tags
+#
 
 
 - name: Install Musicbot
   hosts: all
   roles:
     - { role: musicbot, tags: musicbot }
+    - { role: musicbot-config, tags: musicbot-config }
 
 
 
