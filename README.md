@@ -44,8 +44,10 @@ This will take a few minutes to run.
 
 
 When complete, Musicbot will be installed as a service under systemd on Ubuntu 16.04.  It will
-start when the machine starts and respawn if it crashes (or the process is killed).  Running a service
-is not supported under Ubuntu 14.04 at this time, because...
+start when the machine starts and respawn if it crashes (or the process is killed).  In fact,
+if configured properly, it should start playing in your Discord server shortly!
+
+Running as a service is not supported under Ubuntu 14.04 at this time, because...
 
 
 ## Known Issues
