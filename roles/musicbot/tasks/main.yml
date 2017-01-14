@@ -1,0 +1,29 @@
+
+- name: Install starting packages
+  package: name={{item}} state=installed
+  with_items:
+    - build-essential
+    - unzip
+    - software-properties-common
+
+
+- name: Add xerus-media repo
+  command: add-apt-repository ppa:mc3man/xerus-media -y creates=/etc/apt/sources.list.d/mc3man-ubuntu-xerus-media-xenial.list
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'xenial'
+  register: xerus_media_repo_installed
+
+- name: Just installed xerus_media_repo, running apt-get update
+  command: apt-get update -y
+  when: xerus_media_repo_installed.stdout == "OK"
+
+- name: Install additional packages
+  package: name={{item}} state=installed
+  with_items:
+    - git
+    - ffmpeg
+    - libopus-dev
+    - libffi-dev
+    - libsodium-dev
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'xenial'
+
+
