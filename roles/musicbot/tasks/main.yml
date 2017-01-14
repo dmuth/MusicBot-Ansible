@@ -7,16 +7,46 @@
     - software-properties-common
 
 
-- name: Add xerus-media repo
+#
+#
+# Add more repos
+#
+#
+- name: Add deadsnakes repo (Ubuntu 14.04)
+  command: add-apt-repository ppa:fkrull/deadsnakes creates=/etc/apt/sources.list.d/fkrull-deadsnakes-trusty.list
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'trusty'
+
+- name: Add trusty-media repo (Ubuntu 14.04)
+  command: add-apt-repository ppa:mc3man/trusty-media creates=/etc/apt/sources.list.d/mc3man-trusty-media-trusty.list
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'trusty'
+
+- name: Add libsodium repo (Ubuntu 14.04)
+  command: add-apt-repository ppa:chris-lea/libsodium creates=/etc/apt/sources.list.d/chris-lea-libsodium-trusty.list
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'trusty'
+
+
+- name: Add xerus-media repo (Ubuntu 16.04)
   command: add-apt-repository ppa:mc3man/xerus-media -y creates=/etc/apt/sources.list.d/mc3man-ubuntu-xerus-media-xenial.list
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'xenial'
-  register: xerus_media_repo_installed
 
-- name: Just installed xerus_media_repo, running apt-get update
-  command: apt-get update -y
-  when: xerus_media_repo_installed.stdout == "OK"
+- name: apt-get update
+  apt:
+    update_cache: yes
 
-- name: Install additional packages
+
+
+#
+# Install additional packages
+#
+- name: Install additional packages (Ubuntu 14.04)
+  package: name={{item}} state=installed
+  with_items:
+    - python
+    - python3.5-dev
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'trusty'
+
+
+- name: Install additional packages (common)
   package: name={{item}} state=installed
   with_items:
     - git
@@ -24,11 +54,28 @@
     - libopus-dev
     - libffi-dev
     - libsodium-dev
-  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'xenial'
 
 
+
+#
+# At this point, we have all repos, so check out the source
+#
 - name: Clone MusicBot Git Repo
   git: repo=https://github.com/Just-Some-Bots/MusicBot.git dest=/var/Musicbot
+
+
+#
+# Install pip modules
+#
+- name: Install Pip for Python 3
+  package: name=python3-pip state=installed
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'trusty'
+  tags: test
+
+- name: Install Pip Modules
+  command: python3.5 -m pip install -U -r requirements.txt chdir=/var/Musicbot
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'trusty'
+  tags: test
 
 
 - name: Install Pip for Python 3
