@@ -7,7 +7,7 @@ running Ubuntu 16.04 or Ubuntu 14.04. When the playbook is succesfully run, the 
 
 - A running copy of MusicBot
 - MusicBot configured as a service so that it will restart if the process dies or the machine is restarted
-- Performance metrics will be gathered every 5 minutes with Munin, available at http://hostname/munin/
+- Performance metrics will be gathered every 5 minutes with <a href="http://munin-monitoring.org/">Munin</a>, available at http://hostname/munin/
 
 
 ## Prerequisites (if using Vagrant)
