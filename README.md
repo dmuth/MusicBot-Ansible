@@ -3,7 +3,11 @@
 
 This Ansible playbook is used to install the excellent 
 <a href="https://github.com/Just-Some-Bots/MusicBot">MusicBot bot for Discord</a> onto a machine
-running Ubuntu 16.04 or Ubuntu 14.04.
+running Ubuntu 16.04 or Ubuntu 14.04. When the playbook is succesfully run, the machine will have the following:
+
+- A running copy of MusicBot
+- MusicBot configured as a service so that it will restart if the process dies or the machine is restarted
+- Performance metrics will be gathered every 5 minutes with Munin, available at http://hostname/munin/
 
 
 ## Prerequisites (if using Vagrant)
@@ -50,9 +54,14 @@ if configured properly, it should start playing in your Discord server shortly!
 
 ## Known Issues
 
-- None at this time.  Don't try to install this on Ubuntu 12.04, though.  
+- Because Nginx is a little weird with how it includes configurations, I ended up 
+having to remove /etc/nginx/sites-enabled/default and replacing it with a 
+configuration file of my own so that I can get the Munin graphs to work.  
+I am completely open to any suggestions anyone might have on how to have configuration
+that doesn't require removing existing nginx configuration.
+- Don't try to install this on Ubuntu 12.04.
 Not all of the required libraries exist in repositories, at least from 
-what I've been able to see.
+what I've been able to see.  No guarantees are made for CentOS or any other Linux distro.
 
 
 ## Authors
