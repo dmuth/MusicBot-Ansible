@@ -1,0 +1,6 @@
+
+
+- name: reload nginx
+  command: service nginx reload
+
+

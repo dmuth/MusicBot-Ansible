@@ -1,0 +1,17 @@
+
+- name: Install Nginx
+  package: name=nginx state=installed
+
+- name: Install Munin
+  package: name=munin  state=installed
+
+- name: Remove default Nginx conf
+  file: path=/etc/nginx/sites-enabled/default state=absent
+  notify: reload nginx
+
+- name: Install nginx.conf
+  copy: src=roles/monitoring/files/munin.conf dest=/etc/nginx/sites-enabled/nginx.conf
+  notify: reload nginx
+
+
+
