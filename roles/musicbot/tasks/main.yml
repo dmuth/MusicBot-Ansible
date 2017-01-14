@@ -27,3 +27,17 @@
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'xenial'
 
 
+- name: Clone MusicBot Git Repo
+  git: repo=https://github.com/Just-Some-Bots/MusicBot.git dest=/var/Musicbot
+
+
+- name: Install Pip for Python 3
+  package: name=python3-pip state=installed
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'xenial'
+
+- name: Install Pip Modules
+  command: python3 -m pip install -U -r requirements.txt chdir=/var/Musicbot
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'xenial'
+
+
+
