@@ -1,5 +1,8 @@
 
 
 .vagrant
+
 inventory
+
+*.retry
 
