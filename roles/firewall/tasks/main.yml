@@ -1,0 +1,19 @@
+
+
+- name: UFW
+  ufw: state=enabled policy=allow logging=on
+
+- name: Allow port 4949 locally
+  ufw: rule=allow port=4949 src=127.0.0.1 log=yes
+
+- name: Reject port 4949 everywhere else (Munin)
+  ufw: rule=deny port=4949 log=yes
+
+- name: Allow SSH
+  ufw: rule=allow port=22  log=yes
+
+
+
+
+
+
