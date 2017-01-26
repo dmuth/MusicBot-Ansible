@@ -2,8 +2,11 @@
 
 - name: Install options.ini (if missing, look at roles/musicbot-config/files/ for a sample file you can tweak!)
   copy: src=roles/musicbot-config/files/options.ini dest=/var/Musicbot/config/options.ini
+  notify: restart musicbot
+  
 
 - name: Install permissions.ini (if missing, look at roles/musicbot-config/files/ for a sample file you can tweak!)
   copy: src=roles/musicbot-config/files/permissions.ini dest=/var/Musicbot/config/permissions.ini
+  notify: restart musicbot
 
 

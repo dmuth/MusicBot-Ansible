@@ -1,0 +1,7 @@
+
+#
+# Restart Musicbot
+#
+- name: restart musicbot
+  service: name=musicbot state=restarted
+
