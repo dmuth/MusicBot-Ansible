@@ -8,7 +8,7 @@
 Vagrant.configure(2) do |config|
 
 
-	config.vm.define "ubuntu14.04" do |host|
+	config.vm.define "ubuntu14" do |host|
 
 		host.vm.box = "ubuntu/trusty64"
 
@@ -44,7 +44,7 @@ Vagrant.configure(2) do |config|
 	end
 
 
-	config.vm.define "ubuntu16.04" do |host|
+	config.vm.define "ubuntu16" do |host|
 
 		host.vm.box = "bento/ubuntu-16.04"
 
